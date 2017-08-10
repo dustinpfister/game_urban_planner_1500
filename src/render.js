@@ -31,6 +31,9 @@ let Render = (function () {
 
             let x = 0, // the x and y map pos
             y = 0,
+			
+			mapOffsetX = 15,
+			mapOffsetY = 20,
 
             vx = 0, // view cell x,y,w,h (when getting stack data)
             vy = 0,
@@ -40,9 +43,14 @@ let Render = (function () {
             cellSize = 32;
 
             // events for game render state.
-            canvas.addEventListener('mousemove', function () {
+            canvas.addEventListener('mousemove', function (e) {
 
-                console.log('mousemove');
+                var bx = e.target.getBoundingClientRect();
+
+                x = e.clientX - bx.left,
+                y = e.clientY - bx.top;
+
+                console.log(x + ',' + y);
 
             });
 
@@ -53,7 +61,6 @@ let Render = (function () {
 
                 cls();
                 ctx.fillStyle = '#ffffff';
-                ctx.fillText('game state: ', 10, 10);
 
                 // render current map section
                 mapSec.forEach(function (cell) {
@@ -62,8 +69,8 @@ let Render = (function () {
                     y = cell.y - vy;
 
                     ctx.fillRect(
-                        x * cellSize + 16,
-                        y * cellSize + 20,
+                        x * cellSize + mapOffsetX,
+                        y * cellSize + mapOffsetY,
                         cellSize - 1,
                         cellSize - 1);
 
