@@ -1,3 +1,5 @@
+!! this outline is not complete !!
+
 0.0.x - First Alpha release
 
 * reusing my stack 3 library
@@ -10,8 +12,36 @@
 * Land tile object standard
 * zone type property for each land tile
 * color of tiles different depending on zone type
-* user menu allows to build zone types
+* user menu allows to zone land
+* user menu allows to unzone land.
 
-0.2.x Alpha III
+0.2.x - Buildings
 
-* JSON file standard for save state
+* add a Building class that allows for the designation of certain map areas as a building.
+* user menu allows for the building on one building.
+* user menu allows for the destruction of a building.
+
+0.3.x - Main update process
+
+* added Game update process
+* Construction of zoned areas happens
+
+0.4.x - population and money
+
+* time, population, money, and property tax values introduced.
+* player begins with a certain amount of starting money
+* zoning, and unzoning of land now costs money.
+* destruction of a building now costs money.
+* population will increase to a certain value depending on amount of developed areas zoned residential.
+* at the end of each year the player recives an amount of money based on tax rate.
+
+0.5.x - Commercial Zones
+
+* jobs property added to land tile object
+* Commercial Zones effect development of residential zones, buy supplying jobs.
+* the distance
+
+0.6.x - Save states
+
+* can load and save a city via local storage
+* JSON file save state standard, allows for hard coded city's in source code.
