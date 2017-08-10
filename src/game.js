@@ -21,6 +21,15 @@ let Game = (function () {
                     d : 1
                 });
 
+            // for all points
+            city.map.points.forEach(function (pt) {
+
+                let v = Math.floor(Math.random() * 200) + 55;
+
+                pt.color = 'rgba(' + v + ',' + v + ',' + v + ',1)'
+
+            });
+
         },
 
         // just return a reference to the current city object

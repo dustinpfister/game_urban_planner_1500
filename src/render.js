@@ -46,6 +46,8 @@ let Render = (function () {
             cellSize = 32;
 
             // events for game render state.
+
+            // mouse move
             canvas.addEventListener('mousemove', function (e) {
 
                 var bx = e.target.getBoundingClientRect();
@@ -55,16 +57,26 @@ let Render = (function () {
 
             });
 
+            // keyboard
+            window.addEventListener('keyup', function (e) {
+
+                e.preventDefault();
+
+                console.log(e.keyCode);
+
+            });
+
             return function () {
 
                 let city = Game.getCity(),
                 mapSec = city.map.getLayerSection(0, vx, vy, vx + vw, vy + vh);
 
                 cls();
-                ctx.fillStyle = '#ffffff';
 
                 // render current map section
                 mapSec.forEach(function (cell) {
+
+                    ctx.fillStyle = cell.color;
 
                     let x = cell.x - vx,
                     y = cell.y - vy;
