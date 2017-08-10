@@ -7,15 +7,15 @@ Renders a game view to the canvas
 let Render = (function () {
 
     // create and inject a canvas
-    var canvas = document.createElement('canvas'),
+    let canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d');
 
     // append to body
     document.body.appendChild(canvas);
 
     // set actual matrix size of the canvas
-    canvas.width = 320;
-    canvas.height = 240;
+    canvas.width = 640;
+    canvas.height = 480;
 
     let cls = function () {
         // default the canvas to a solid back background
@@ -28,11 +28,11 @@ let Render = (function () {
 
         game : function () {
 
-            var city = Game.getCity(),
+            let city = Game.getCity(),
             vx = 1, // view cell x,y,w,h (when getting stack data)
             vy = 1,
-            vw = 8,
-            vh = 6,
+            vw = 14,
+            vh = 11,
             cellSize = 32,
             mapSec = city.map.getLayerSection(0, vx, vy, vx + vw, vy + vh);
 
@@ -40,11 +40,17 @@ let Render = (function () {
             ctx.fillStyle = '#ffffff';
             ctx.fillText('game state: ', 10, 10);
 
-            // render curent map section
-
+            // render current map section
             mapSec.forEach(function (cell) {
 
-                ctx.fillRect((cell.x - vx) * cellSize + 16, (cell.y-vy) * cellSize + 20, cellSize, cellSize);
+                let x = cell.x - vx,
+                y = cell.y - vy;
+
+                ctx.fillRect(
+                    x * cellSize + 16,
+                    y * cellSize + 20,
+                    cellSize,
+                    cellSize);
 
             });
 
