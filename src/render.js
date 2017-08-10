@@ -1,6 +1,7 @@
 /*
 
-Renders a game view to the canvas
+* Renders a game view to the canvas
+* Also contains my event handers.
 
  */
 
@@ -34,6 +35,12 @@ let Render = (function () {
             vh = 11,
             cellSize = 32;
 
+            // events for game render state.
+            canvas.addEventListener('mousemove', function () {
+
+                console.log('mousemove');
+
+            });
 
             return function () {
 
