@@ -26,35 +26,42 @@ let Render = (function () {
 
     states = {
 
-        game : function () {
+        game : (function () {
 
-            let city = Game.getCity(),
-            vx = 1, // view cell x,y,w,h (when getting stack data)
+            let vx = 1, // view cell x,y,w,h (when getting stack data)
             vy = 1,
             vw = 14,
             vh = 11,
-            cellSize = 32,
-            mapSec = city.map.getLayerSection(0, vx, vy, vx + vw, vy + vh);
+            cellSize = 32;
 
-            cls();
-            ctx.fillStyle = '#ffffff';
-            ctx.fillText('game state: ', 10, 10);
 
-            // render current map section
-            mapSec.forEach(function (cell) {
+            return function () {
 
-                let x = cell.x - vx,
-                y = cell.y - vy;
+                let city = Game.getCity(),
+                mapSec = city.map.getLayerSection(0, vx, vy, vx + vw, vy + vh);
 
-                ctx.fillRect(
-                    x * cellSize + 16,
-                    y * cellSize + 20,
-                    cellSize-1,
-                    cellSize-1);
+                cls();
+                ctx.fillStyle = '#ffffff';
+                ctx.fillText('game state: ', 10, 10);
 
-            });
+                // render current map section
+                mapSec.forEach(function (cell) {
+
+                    let x = cell.x - vx,
+                    y = cell.y - vy;
+
+                    ctx.fillRect(
+                        x * cellSize + 16,
+                        y * cellSize + 20,
+                        cellSize - 1,
+                        cellSize - 1);
+
+                });
+
+            };
 
         }
+            ())
 
     };
 
