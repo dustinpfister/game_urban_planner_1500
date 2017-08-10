@@ -53,17 +53,26 @@ let Render = (function () {
             // mouse move
             canvas.addEventListener('mousemove', function (e) {
 
-                var bx = e.target.getBoundingClientRect();
+                let bx = e.target.getBoundingClientRect();
 
                 mouseX = e.clientX - bx.left,
                 mouseY = e.clientY - bx.top;
+
+                if (mouseX_temp !== -1 && mouseY_temp !== -1) {
+
+                    let deltaVX = Math.round((mouseX - mouseX_temp) / cellSize),
+                    deltaVY = Math.round((mouseY - mouseY_temp) / cellSize);
+
+                    console.log(deltaVX);
+
+                }
 
             });
 
             // mouse down
             canvas.addEventListener('mousedown', function (e) {
 
-                var bx = e.target.getBoundingClientRect();
+                let bx = e.target.getBoundingClientRect();
 
                 mouseX_temp = e.clientX - bx.left,
                 mouseY_temp = e.clientY - bx.top;
