@@ -49,8 +49,8 @@ let Render = (function () {
                 ctx.fillRect(
                     x * cellSize + 16,
                     y * cellSize + 20,
-                    cellSize,
-                    cellSize);
+                    cellSize-1,
+                    cellSize-1);
 
             });
 
