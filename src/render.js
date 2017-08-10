@@ -45,6 +45,7 @@ let Render = (function () {
             vy = 0,
             vw = 14,
             vh = 11,
+            currentCell = {},
 
             cellSize = 32;
 
@@ -53,18 +54,19 @@ let Render = (function () {
             // mouse move
             canvas.addEventListener('mousemove', function (e) {
 
-                let bx = e.target.getBoundingClientRect();
+                let bx = e.target.getBoundingClientRect(),
+
+                // grab a fresh ref to city.
+                city = Game.getCity();
 
                 mouseX = e.clientX - bx.left,
                 mouseY = e.clientY - bx.top;
 
+                // move around map
                 if (mouseX_temp !== -1 && mouseY_temp !== -1) {
 
                     let deltaVX = Math.round((mouseX - mouseX_temp) / cellSize),
-                    deltaVY = Math.round((mouseY - mouseY_temp) / cellSize),
-
-                    // grab a fresh ref to city.
-                    city = Game.getCity();
+                    deltaVY = Math.round((mouseY - mouseY_temp) / cellSize);
 
                     vx += deltaVX;
                     vy += deltaVY;
@@ -90,6 +92,27 @@ let Render = (function () {
                     if (vy > city.map.h - vh) {
 
                         vy = city.map.h - vh;
+
+                    }
+
+                }
+
+                // grab current cell
+                console.log();
+
+                let mapCellX = vx + Math.floor((mouseX - mapOffsetX) / cellSize),
+                mapCellY = vx + Math.floor((mouseX - mapOffsetX) / cellSize);
+
+                currentCell = {};
+                if (mapCellX >= 0 && mapCellX < city.map.w) {
+
+                    if (mapCellY >= 0 && mapCellY < city.map.h) {
+
+                        console.log(mapCellX);
+
+                        currentCell = city.map.getPoint(mapCellX, mapCellY, 0);
+
+                        console.log(currentCell);
 
                     }
 
