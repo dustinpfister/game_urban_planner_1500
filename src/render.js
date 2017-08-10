@@ -61,9 +61,37 @@ let Render = (function () {
                 if (mouseX_temp !== -1 && mouseY_temp !== -1) {
 
                     let deltaVX = Math.round((mouseX - mouseX_temp) / cellSize),
-                    deltaVY = Math.round((mouseY - mouseY_temp) / cellSize);
+                    deltaVY = Math.round((mouseY - mouseY_temp) / cellSize),
 
-                    console.log(deltaVX);
+                    // grab a fresh ref to city.
+                    city = Game.getCity();
+
+                    vx += deltaVX;
+                    vy += deltaVY;
+
+                    if (vx < 0) {
+
+                        vx = 0;
+
+                    }
+
+                    if (vx > city.map.w - vw) {
+
+                        vx = city.map.w - vw;
+
+                    }
+
+                    if (vy < 0) {
+
+                        vy = 0;
+
+                    }
+
+                    if (vy > city.map.h - vh) {
+
+                        vy = city.map.h - vh;
+
+                    }
 
                 }
 
