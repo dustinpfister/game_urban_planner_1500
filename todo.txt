@@ -1,10 +1,16 @@
 !! this outline is not complete !!
 
+
+
 0.0.x - First Alpha release
 
 * reusing my stack 3 library
 * Main, Game, and Render modules added
 * very basic user interaction, allowing for just the panning of the map
+
+!! working on 0.0.x (8/10/17)  what is below still needs to be done !!
+
+* moving mouse over any land tile gets a reference to it, display that in the info area.
 
 0.1.x - land tiles, and zone types
 

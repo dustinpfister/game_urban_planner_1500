@@ -145,6 +145,7 @@ let Render = (function () {
                 // render info
                 let tx = 16 + cellSize * vw + 10; // text x
                 ctx.textBaseline = 'top';
+                ctx.fillStyle = '#00ff00';
                 ctx.fillText('Mouse pos: (' + mouseX + ',' + mouseY + ')', tx, 20);
                 ctx.fillText('Mouse pos (temp): (' + mouseX_temp + ',' + mouseY_temp + ')', tx, 40);
                 ctx.fillText('Map pos: (' + mapX + ',' + mapY + ')', tx, 60);
