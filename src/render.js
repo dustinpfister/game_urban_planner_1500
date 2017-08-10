@@ -108,11 +108,7 @@ let Render = (function () {
 
                     if (mapCellY >= 0 && mapCellY < city.map.h) {
 
-                        console.log(mapCellX);
-
                         currentCell = city.map.getPoint(mapCellX, mapCellY, 0);
-
-                        console.log(currentCell);
 
                     }
 
@@ -173,6 +169,16 @@ let Render = (function () {
                 ctx.fillText('Mouse pos (temp): (' + mouseX_temp + ',' + mouseY_temp + ')', tx, 40);
                 ctx.fillText('Map pos: (' + mapX + ',' + mapY + ')', tx, 60);
                 ctx.fillText('Mouse down: ' + mouseDown, tx, 80);
+
+                let prop,
+                i = 0;
+                for (prop in currentCell) {
+
+                    ctx.fillText(prop + ' : ' + currentCell[prop], tx, 100 + 20 * i);
+
+                    i += 1;
+
+                }
 
             };
 
