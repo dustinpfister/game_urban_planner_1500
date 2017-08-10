@@ -4,7 +4,6 @@
 
 * reusing my stack 3 library
 * Main, Game, and Render modules added
-
 * very basic user interaction, allowing for just the panning of the map
 
 0.1.x - land tiles, and zone types
