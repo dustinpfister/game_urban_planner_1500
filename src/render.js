@@ -31,6 +31,9 @@ let Render = (function () {
 
             let mouseX = 0, // mouse
             mouseY = 0,
+            mouseX_temp = -1,
+            mouseY_temp = -1,
+            mouseDown = false,
 
             mapX = 0, // map
             mapY = 0,
@@ -57,12 +60,25 @@ let Render = (function () {
 
             });
 
-            // keyboard
-            window.addEventListener('keyup', function (e) {
+            // mouse down
+            canvas.addEventListener('mousedown', function (e) {
 
-                e.preventDefault();
+                var bx = e.target.getBoundingClientRect();
 
-                console.log(e.keyCode);
+                mouseX_temp = e.clientX - bx.left,
+                mouseY_temp = e.clientY - bx.top;
+
+                mouseDown = true;
+
+            });
+
+            // mouse up
+            canvas.addEventListener('mouseup', function (e) {
+
+                mouseX_temp = -1;
+                mouseY_temp = -1;
+
+                mouseDown = false;
 
             });
 
@@ -93,7 +109,9 @@ let Render = (function () {
                 let tx = 16 + cellSize * vw + 10; // text x
                 ctx.textBaseline = 'top';
                 ctx.fillText('Mouse pos: (' + mouseX + ',' + mouseY + ')', tx, 20);
-                ctx.fillText('Map pos: (' + mapX + ',' + mapY + ')', tx, 40);
+                ctx.fillText('Mouse pos (temp): (' + mouseX_temp + ',' + mouseY_temp + ')', tx, 40);
+                ctx.fillText('Map pos: (' + mapX + ',' + mapY + ')', tx, 60);
+                ctx.fillText('Mouse down: ' + mouseDown, tx, 80);
 
             };
 
