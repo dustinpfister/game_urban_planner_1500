@@ -29,13 +29,16 @@ let Render = (function () {
 
         game : (function () {
 
-            let x = 0, // the x and y map pos
-            y = 0,
-			
-			mapOffsetX = 15,
-			mapOffsetY = 20,
+            let mouseX = 0, // mouse
+            mouseY = 0,
 
-            vx = 0, // view cell x,y,w,h (when getting stack data)
+            mapX = 0, // map
+            mapY = 0,
+            mapOffsetX = 15,
+            mapOffsetY = 20,
+
+            // stack_3 view cell x,y,w,h (when getting stack data)
+            vx = 0,
             vy = 0,
             vw = 14,
             vh = 11,
@@ -47,10 +50,8 @@ let Render = (function () {
 
                 var bx = e.target.getBoundingClientRect();
 
-                x = e.clientX - bx.left,
-                y = e.clientY - bx.top;
-
-                console.log(x + ',' + y);
+                mouseX = e.clientX - bx.left,
+                mouseY = e.clientY - bx.top;
 
             });
 
@@ -79,7 +80,8 @@ let Render = (function () {
                 // render info
                 let tx = 16 + cellSize * vw + 10; // text x
                 ctx.textBaseline = 'top';
-                ctx.fillText('Map pos: (' + x + ',' + y + ')', tx, 20);
+                ctx.fillText('Mouse pos: (' + mouseX + ',' + mouseY + ')', tx, 20);
+                ctx.fillText('Map pos: (' + mapX + ',' + mapY + ')', tx, 40);
 
             };
 
