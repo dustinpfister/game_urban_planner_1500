@@ -1,0 +1,17 @@
+0.0.x - First Alpha release
+
+* reusing my stack 3 library
+* Main, Game, and Render modules added
+
+* very basic user interaction, allowing for just the panning of the map
+
+0.1.x - land tiles, and zone types
+
+* Land tile object standard
+* zone type property for each land tile
+* color of tiles different depending on zone type
+* user menu allows to build zone types
+
+0.2.x Alpha III
+
+* JSON file standard for save state
